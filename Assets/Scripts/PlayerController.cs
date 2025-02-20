@@ -9,6 +9,8 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private bool jumpInput;
     private PlayerInput playerInput;
+
+    private Renderer rend;
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();

@@ -17,9 +17,6 @@ public class WanderingAI : MonoBehaviour
     void Start()
     {
         isAlive = true;
-        rend = GetComponent<Renderer>();
-
-        rend.material.color = Random.ColorHSV();
     }
 
 

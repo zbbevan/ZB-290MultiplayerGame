@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
             {enemy[i] = Instantiate(enemyPrefab) as GameObject;
             randX = Random.Range(-24.0f, 24.0f);
             randZ = Random.Range(-24.0f, 24.0f);
-            enemy[i].transform.position = new Vector3(randX, 5, randZ);
+            enemy[i].transform.position = new Vector3(randX, 3, randZ);
             randHeight = Random.Range(3.0f, 5.0f);
             enemy[i].transform.localScale = new Vector3(2, randHeight, 2);
             float angle = Random.Range(0, 360);
@@ -31,9 +31,9 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        GameObject player1 = Instantiate(playerPrefab, new Vector3(-2, 5, 0), Quaternion.identity);
+        GameObject player1 = Instantiate(playerPrefab, new Vector3(-2, 3, 0), Quaternion.identity);
         player1.GetComponent<PlayerController>().playerID = 1;
-        GameObject player2 = Instantiate(playerPrefab, new Vector3(2, 5, 0), Quaternion.identity);
+        GameObject player2 = Instantiate(playerPrefab, new Vector3(2, 3, 0), Quaternion.identity);
         player2.GetComponent<PlayerController>().playerID = 2;
 
         enemy = new GameObject[5];
@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
             enemy[i] = Instantiate(enemyPrefab) as GameObject;
             randX = Random.Range(-24.0f, 24.0f);
             randZ = Random.Range(-24.0f, 24.0f);
-            enemy[i].transform.position = new Vector3(randX, 5, randZ);
+            enemy[i].transform.position = new Vector3(randX, 3, randZ);
             randHeight = Random.Range(3.0f, 5.0f);
             enemy[i].transform.localScale = new Vector3(2, randHeight, 2);
             float angle = Random.Range(0, 360);
