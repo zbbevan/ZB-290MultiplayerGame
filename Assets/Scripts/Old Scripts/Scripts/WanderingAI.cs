@@ -10,13 +10,19 @@ public class WanderingAI : MonoBehaviour
     [SerializeField] GameObject fireballPrefab;
     private GameObject fireball;
 
+    UI_Manager uI_Manager;
+
     public bool isAlive;
 
     private Renderer rend;
 
+    private Collider col;
+
     void Start()
     {
         isAlive = true;
+        uI_Manager = GameObject.Find("UI_Manager").GetComponent<UI_Manager>();
+        col = GetComponent<Collider>();
     }
 
 
@@ -52,6 +58,16 @@ public class WanderingAI : MonoBehaviour
             Vector3 forward = transform.TransformDirection(Vector3.forward) * 10;
             Debug.DrawRay(transform.position, forward, Color.red, 2, false);
 
+        }
+
+    }
+
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            uI_Manager.AddPoints(1, collision.gameObject.GetComponent<PlayerController>().playerID);
         }
 
     }

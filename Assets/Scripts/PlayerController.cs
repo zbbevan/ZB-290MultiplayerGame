@@ -9,24 +9,32 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveInput;
     private bool jumpInput;
     private PlayerInput playerInput;
+    private Rigidbody rb;
 
     private Renderer rend;
     void Awake()
     {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        rb = GetComponent<Rigidbody>();
         playerInput = GetComponent<PlayerInput>();
     }
     void Update()
     {
         moveInput = playerInput.actions["Move"].ReadValue<Vector2>();
         jumpInput = playerInput.actions["Jump"].WasPressedThisFrame();
+
         
-        Vector3 moveDirection = new Vector3(moveInput.x, 0, moveInput.y);
-        transform.position += moveDirection * moveSpeed * Time.deltaTime;
         
         if (jumpInput)
         {
-            transform.position += Vector3.up * jumpHeight;
+            rb.AddForce(Vector3.up * Mathf.Sqrt(jumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
         }
+    }
+
+    void FixedUpdate()
+    {
+       rb.AddRelativeForce(moveInput.x * moveSpeed, 0, moveInput.y * moveSpeed);
     }
 
 

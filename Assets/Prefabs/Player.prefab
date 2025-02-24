@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 5520355900276615805}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3956463275660816041}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: fc7f4e6ec55ced54f9844903c36e2940, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -123,8 +123,8 @@ Rigidbody:
   m_GameObject: {fileID: 3956463275660816041}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 4
+  m_AngularDrag: 10
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -139,7 +139,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &7952147735967948312
 MonoBehaviour:
@@ -184,8 +184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerID: 1
-  moveSpeed: 10
-  jumpHeight: 3
+  moveSpeed: 100
+  jumpHeight: 7
 --- !u!114 &5520355900276615805
 MonoBehaviour:
   m_ObjectHideFlags: 0
