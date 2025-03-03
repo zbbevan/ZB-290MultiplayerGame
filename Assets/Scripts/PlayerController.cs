@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     private PlayerInput playerInput;
     private Rigidbody rb;
 
-    private Renderer rend;
     void Awake()
     {
         Cursor.visible = false;
