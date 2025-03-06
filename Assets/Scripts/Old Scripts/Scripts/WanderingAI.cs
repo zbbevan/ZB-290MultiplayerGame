@@ -63,13 +63,4 @@ public class WanderingAI : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            uI_Manager.AddPoints(1, collision.gameObject.GetComponent<PlayerController>().playerID);
-        }
-
-    }
-
 }

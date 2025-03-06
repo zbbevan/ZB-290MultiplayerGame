@@ -4,10 +4,9 @@ using UnityEngine.Rendering;
 
 public class FlagHolder : MonoBehaviour
 {
-    private int pointsToAdd = 1;
     private UI_Manager uI_Manager;
     private int pID;
-    private float pointInterval = 1f;
+    private int pointsLost = -2;
     public bool flagHeld;
 
     private FlagSpawner flagSpawner;
@@ -28,35 +27,36 @@ public class FlagHolder : MonoBehaviour
             flag = flagSpawner.flag;
         }
 
+
     }
 
-    public IEnumerator AddPoints()
+    public IEnumerator TradeFlag(GameObject newHolder)
     {
-        if (flagHeld)
+        yield return new WaitForSeconds(0.1f);
+        if(flagHeld)
         {
-            uI_Manager.AddPoints(pointsToAdd, pID);
-            yield return new WaitForSeconds(pointInterval);
-            StartCoroutine(AddPoints());
+        flag.GetComponent<Flag>().ChangeHolder(newHolder);
+        flagHeld = false;
         }
-        else
-        {
-            yield return null;
-        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.gameObject.tag == "Flag")
+        {
+            flagHeld = true;
+            flag = collision.gameObject;
+            flag.GetComponent<Flag>().ChangeHolder(this.gameObject);
+        }
         if (flagHeld)
         {
-            if (collision.gameObject.tag == "Player")
+             if (collision.gameObject.tag == "Player")
             {
+                Debug.Log(collision.gameObject.GetComponent<PlayerController>().playerID);
                 if (collision.gameObject.GetComponent<FlagHolder>().flagHeld == false)
                 {
-                    flagHeld = false;
-                    StopCoroutine(AddPoints());
-                    collision.gameObject.GetComponent<FlagHolder>().flagHeld = true;
-                    collision.gameObject.GetComponent<FlagHolder>().StartCoroutine(collision.gameObject.GetComponent<FlagHolder>().AddPoints());
-                    flag.GetComponent<Flag>().ChangeHolder(collision.gameObject);
+                    StartCoroutine(TradeFlag(collision.gameObject));
                 }
             }
             if (collision.gameObject.tag == "Enemy")
@@ -64,12 +64,17 @@ public class FlagHolder : MonoBehaviour
                 if (flagHeld)
                 {
                     flagHeld = false;
-                    StopCoroutine(AddPoints());
+                    uI_Manager.AddPoints(pointsLost, pID);
                     flag.GetComponent<Flag>().ResetFlag();
+                }
+                if(!flagHeld)
+                {
+                    uI_Manager.AddPoints(pointsLost, pID);
                 }
 
             }
         }
     }
+
 
 }

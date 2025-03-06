@@ -8,6 +8,8 @@ public class UI_Manager : MonoBehaviour
     [SerializeField] private TMP_Text[] playerScoreText;
     [SerializeField] private int[] playerScores;
 
+    [SerializeField] private int winScore = 20;
+
     [SerializeField] private GameObject gameOverText;
     [SerializeField] private GameObject quitButton;
 
@@ -20,6 +22,7 @@ public class UI_Manager : MonoBehaviour
             playerScores[i] = 0;
             playerScoreText[i].text ="P"+ (i+1) + " Score: " + playerScores[i].ToString();
         }
+
 
     }
 
@@ -35,7 +38,7 @@ public class UI_Manager : MonoBehaviour
    {
     for (int i = 0; i < playerScoreText.Length; i++)
     {
-        if (playerScores[i] >= 10)
+        if (playerScores[i] >= winScore)
         {
             gameOverText.SetActive(true);
             quitButton.SetActive(true);

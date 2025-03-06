@@ -1,11 +1,21 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerPrefab;
     [SerializeField] private GameObject enemyPrefab;
+
+    public GameObject[] players;
     private GameObject[] enemy;
     private float randHeight;
+    private FlagSpawner flagSpawner;
+    public GameObject flag;
+
+    private int playerToAdd;
+
+    private UI_Manager uI_Manager;
 
     private float randX;
     private float randZ;
@@ -28,13 +38,26 @@ public class GameManager : MonoBehaviour
             }
 
         }
+
+
+
+
     }
     void Start()
     {
+        uI_Manager = GameObject.Find("UI_Manager").GetComponent<UI_Manager>();
+        flagSpawner = GetComponent<FlagSpawner>();
+        flag = flagSpawner.flag;
+        players = new GameObject[2];
+
         GameObject player1 = Instantiate(playerPrefab, new Vector3(-2, 3, 0), Quaternion.identity);
         player1.GetComponent<PlayerController>().playerID = 1;
         GameObject player2 = Instantiate(playerPrefab, new Vector3(2, 3, 0), Quaternion.identity);
         player2.GetComponent<PlayerController>().playerID = 2;
+
+        players[0] = player1;
+        players[1] = player2;
+
 
         enemy = new GameObject[5];
         for (int i = 0; i < 5; i++)
@@ -48,5 +71,21 @@ public class GameManager : MonoBehaviour
             float angle = Random.Range(0, 360);
             enemy[i].transform.Rotate(0, angle, 0);
         }
+
     }
+
+
+    public IEnumerator GainPoints()
+    {
+        if (flag.gameObject.GetComponent<Flag>().myHolder != null)
+        {
+            playerToAdd = flag.gameObject.GetComponent<Flag>().myHolder.GetComponent<PlayerController>().playerID;
+            uI_Manager.AddPoints(1, playerToAdd);
+        }
+        yield return new WaitForSeconds(2); 
+        StartCoroutine(GainPoints());
+
+    }
+
+
 }

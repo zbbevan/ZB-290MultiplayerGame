@@ -6,10 +6,11 @@ public class FlagSpawner : MonoBehaviour
 
     public GameObject flag;
 
-    void Start()
+    void Awake()
     {
         SpawnFlag();
     }
+
 
     void Update()
     {
