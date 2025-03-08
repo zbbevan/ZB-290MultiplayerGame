@@ -28,7 +28,12 @@ public class UI_Manager : MonoBehaviour
 
     public void AddPoints(int points, int playerID)
     {
+
         playerScores[playerID - 1] += points;
+        if (playerScores[playerID - 1] < 0)
+        {
+            playerScores[playerID - 1] = 0;
+        }
         playerScoreText[playerID - 1].text ="P"+ (playerID) + "Score: " + playerScores[playerID - 1].ToString();
     }
   
@@ -47,6 +52,15 @@ public class UI_Manager : MonoBehaviour
             gameOverText.GetComponent<TMP_Text>().text = "Player " + (i + 1) + " Wins!";
             playerScoreText[i].text = "P" + (i + 1) + " Score: " + playerScores[i].ToString();
             playerScoreText[i].color = Color.green;
+        }
+    }
+
+
+    for (int i = 0; i < playerScores.Length; i++)
+    {
+        if (playerScores[i] < 0)
+        {
+            playerScores[i] = 0;
         }
     }
    }

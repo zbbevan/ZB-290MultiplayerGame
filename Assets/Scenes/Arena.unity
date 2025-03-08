@@ -1317,7 +1317,7 @@ GameObject:
   - component: {fileID: 411490359}
   m_Layer: 0
   m_Name: FlagPlatform4
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1426,7 +1426,7 @@ GameObject:
   - component: {fileID: 415719725}
   m_Layer: 0
   m_Name: FlagPlatform3
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2711,7 +2711,7 @@ GameObject:
   - component: {fileID: 901317642}
   m_Layer: 0
   m_Name: FlagPlatform1
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4732,7 +4732,7 @@ GameObject:
   - component: {fileID: 1508199237}
   m_Layer: 0
   m_Name: FlagPlatform2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6692,7 +6692,7 @@ GameObject:
   - component: {fileID: 2092827928}
   m_Layer: 0
   m_Name: ArenaFloor
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
