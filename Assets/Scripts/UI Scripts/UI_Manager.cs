@@ -12,6 +12,7 @@ public class UI_Manager : MonoBehaviour
 
     [SerializeField] private GameObject gameOverText;
     [SerializeField] private GameObject quitButton;
+    [SerializeField] private GameObject restartButton;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -47,6 +48,7 @@ public class UI_Manager : MonoBehaviour
         {
             gameOverText.SetActive(true);
             quitButton.SetActive(true);
+            restartButton.SetActive(true);
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
             gameOverText.GetComponent<TMP_Text>().text = "Player " + (i + 1) + " Wins!";
