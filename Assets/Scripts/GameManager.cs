@@ -4,7 +4,8 @@ using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] private GameObject playerPrefab;
+    [SerializeField] private GameObject player1Prefab;
+    [SerializeField] private GameObject player2Prefab;
     [SerializeField] private GameObject enemyPrefab;
 
     public GameObject[] players;
@@ -50,9 +51,9 @@ public class GameManager : MonoBehaviour
         flag = flagSpawner.flag;
         players = new GameObject[2];
 
-        GameObject player1 = Instantiate(playerPrefab, new Vector3(-2, 3, 0), Quaternion.identity);
+        GameObject player1 = Instantiate(player1Prefab, new Vector3(-2, 3, 0), Quaternion.identity);
         player1.GetComponent<PlayerController>().playerID = 1;
-        GameObject player2 = Instantiate(playerPrefab, new Vector3(2, 3, 0), Quaternion.identity);
+        GameObject player2 = Instantiate(player2Prefab, new Vector3(2, 3, 0), Quaternion.identity);
         player2.GetComponent<PlayerController>().playerID = 2;
 
         players[0] = player1;
